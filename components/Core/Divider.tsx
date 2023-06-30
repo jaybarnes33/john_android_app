@@ -6,7 +6,7 @@ const Divider = ({ title }: { title: string }) => {
   const width = Dimensions.get("window").width;
   return (
     <View
-      className="bg-gray-100 mb-3 flex-row justify-between items-center py-2 px-5 box-border"
+      className="bg-gray-100 my-6 flex-row justify-between items-center py-2 px-6 box-border"
       style={{ width: width }}
     >
       <Text className="text-lg text-neutral-800">{title}</Text>

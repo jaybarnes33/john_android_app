@@ -5,9 +5,16 @@ import {
   ThemeProvider,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import { SplashScreen, Stack } from "expo-router";
+import { SplashScreen, Stack, useRouter } from "expo-router";
 import { useEffect } from "react";
-import { Platform, Text, View, useColorScheme } from "react-native";
+import {
+  Platform,
+  Text,
+  Touchable,
+  TouchableOpacity,
+  View,
+  useColorScheme,
+} from "react-native";
 import { MaterialCommunityIcons as MaterialIcons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 export {
@@ -42,7 +49,7 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
-
+  const router = useRouter();
   return (
     <>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
@@ -55,8 +62,14 @@ function RootLayoutNav() {
                   Platform.OS === "android" ? "h-24 justify-center" : ""
                 }
               >
-                <View className="bg-white flex-row justify-between  px-5">
-                  <MaterialIcons name="chevron-left" size={24} color="black" />
+                <View className="bg-white flex-row justify-between  px-6">
+                  <TouchableOpacity onPress={() => router.back()}>
+                    <MaterialIcons
+                      name="chevron-left"
+                      size={24}
+                      color="black"
+                    />
+                  </TouchableOpacity>
                   <Text className="capitalize text-xl">
                     {" "}
                     {props.route.name}

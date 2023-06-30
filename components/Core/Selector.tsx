@@ -12,7 +12,7 @@ const Selector = ({
   return (
     <TouchableOpacity
       className={clsx([
-        `w-[45%]  py-3 rounded-full  mr-4  my-1 items-center justify-between`,
+        `w-[45%]  py-3 rounded-full  mr-4  mb-2 items-center justify-between`,
         selected ? `bg-primary` : `bg-neutral-100`,
       ])}
       onPress={() => setSelected(!selected)}
