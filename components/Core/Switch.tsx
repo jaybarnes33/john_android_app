@@ -8,6 +8,7 @@ const Switch = () => {
   return (
     <View className="scale-75">
       <ToggleSwitch
+        animationSpeed={0.65}
         isOn={on}
         onToggle={(isOn) => setOn(isOn)}
         trackOnStyle={{

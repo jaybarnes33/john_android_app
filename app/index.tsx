@@ -56,7 +56,7 @@ const main = () => {
 
         <View>
           <Divider title="Feature 1" />
-          <View className="gap-3">
+          <View className="gap-6">
             {new Array(5).fill(1).map((item, i) => (
               <View
                 className={clsx([
