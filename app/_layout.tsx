@@ -71,7 +71,7 @@ function RootLayoutNav() {
                   Platform.OS === "android" ? "h-24 justify-center" : ""
                 }
               >
-                <View className="bg-white flex-row justify-between  px-6">
+                <View className="bg-white flex-row h-16 justify-between items-center  px-6">
                   <TouchableOpacity onPress={() => router.back()}>
                     <MaterialIcons
                       name="chevron-left"
