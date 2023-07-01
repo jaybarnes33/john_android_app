@@ -27,7 +27,7 @@ const Source = () => {
             </View>
           }
         >
-          <View className="gap-y-4 pt-7 pb-6 bg-light px-6 w-screen">
+          <View className="gap-y-4 pt-8 pb-6 bg-light px-6 w-screen">
             <Typography size="md" color={Colors.light.primary}>
               Place holder
             </Typography>

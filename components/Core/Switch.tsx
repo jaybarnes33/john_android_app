@@ -6,9 +6,9 @@ import Colors from "../../constants/Colors";
 const Switch = () => {
   const [on, setOn] = useState<boolean>(false);
   return (
-    <View className="scale-75">
+    <View className="scale-[0.55]">
       <ToggleSwitch
-        animationSpeed={0.65}
+        animationSpeed={0.5}
         isOn={on}
         onToggle={(isOn) => setOn(isOn)}
         trackOnStyle={{
