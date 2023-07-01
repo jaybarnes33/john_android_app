@@ -1,6 +1,7 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import clsx from "clsx";
+import Colors from "../../constants/Colors";
 const Selector = ({
   text,
   isSelected,
@@ -12,12 +13,17 @@ const Selector = ({
   return (
     <TouchableOpacity
       className={clsx([
-        `w-[45%]  py-3 rounded-full  mr-4  mb-2 items-center justify-between`,
-        selected ? `bg-primary` : `bg-neutral-100`,
+        `w-[45%]  py-3 rounded-full mr-auto    mb-2 items-center justify-between`,
       ])}
+      activeOpacity={0.8}
+      style={{
+        backgroundColor: selected ? Colors.light.primary : Colors.light.accent,
+      }}
       onPress={() => setSelected(!selected)}
     >
-      <Text className={clsx([selected && "text-white"])}>{text}</Text>
+      <Text style={{ color: !selected ? Colors.light.textsub : "white" }}>
+        {text}
+      </Text>
     </TouchableOpacity>
   );
 };

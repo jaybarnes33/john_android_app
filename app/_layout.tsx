@@ -4,19 +4,26 @@ import {
   DefaultTheme,
   ThemeProvider,
 } from "@react-navigation/native";
-import { useFonts } from "expo-font";
+
 import { SplashScreen, Stack, useRouter } from "expo-router";
 import { useEffect } from "react";
 import {
   Platform,
   Text,
-  Touchable,
   TouchableOpacity,
   View,
   useColorScheme,
 } from "react-native";
 import { MaterialCommunityIcons as MaterialIcons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
+import {
+  useFonts,
+  Montserrat_400Regular,
+  Montserrat_500Medium,
+  Montserrat_600SemiBold,
+  Montserrat_700Bold,
+} from "@expo-google-fonts/montserrat";
+import Typography from "../components/Core/Typography";
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
@@ -29,8 +36,10 @@ export const unstable_settings = {
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
-    ...FontAwesome.font,
+    Montserrat_400Regular,
+    Montserrat_500Medium,
+    Montserrat_600SemiBold,
+    Montserrat_700Bold,
   });
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
@@ -70,10 +79,10 @@ function RootLayoutNav() {
                       color="black"
                     />
                   </TouchableOpacity>
-                  <Text className="capitalize text-xl">
+                  <Typography size="xl" capitalize>
                     {" "}
                     {props.route.name}
-                  </Text>
+                  </Typography>
                   <MaterialIcons name="dots-vertical" size={24} color="black" />
                 </View>
               </SafeAreaView>

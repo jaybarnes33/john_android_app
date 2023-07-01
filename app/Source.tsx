@@ -1,9 +1,11 @@
-import { View, Text, Switch, Platform } from "react-native";
+import { View, Platform } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native";
 import AccordionListItem from "../components/Accordion/AccordionItem";
 import clsx from "clsx";
 import Colors from "../constants/Colors";
+import Typography from "../components/Core/Typography";
+import Switch from "../components/Core/Switch";
 
 const Source = () => {
   return (
@@ -12,30 +14,30 @@ const Source = () => {
         <AccordionListItem
           key={i}
           title={
-            <View className="flex-1 flex-row gap-3 items-center">
-              <View className="h-16 w-16 bg-red-300 rounded-full"></View>
-              <View>
-                <Text>Place holder</Text>
-                <Text className="text-gray-500">00000</Text>
+            <View className="flex-1 flex-row gap-3 items-start">
+              <View className="h-16 w-16 bg-secondary rounded-full"></View>
+              <View className="justify-between h-12">
+                <Typography size="md" bold>
+                  Place holder
+                </Typography>
+                <Typography size="sm" color={Colors.light.textsub}>
+                  00000000
+                </Typography>
               </View>
             </View>
           }
         >
-          <View className="gap-4 py-4 bg-light">
+          <View className="gap-y-4 pt-7 pb-6 bg-light px-6 w-screen">
+            <Typography size="md" color={Colors.light.primary}>
+              Place holder
+            </Typography>
             {new Array(3).fill(1).map((item, i) => (
               <View
-                className={clsx([
-                  "flex-row w-screen  items-center justify-between px-6 h-6",
-                ])}
+                className={clsx(["flex-row items-center justify-between h-6"])}
                 key={i}
               >
-                <Text>Place holder</Text>
-                <Switch
-                  className={clsx([Platform.OS === "ios" && "scale-75"])}
-                  value={i % 2 === 0 && true}
-                  thumbColor="white"
-                  trackColor={{ false: "#eee", true: Colors.light.primary }}
-                />
+                <Typography size="md">Place holder</Typography>
+                <Switch />
               </View>
             ))}
           </View>

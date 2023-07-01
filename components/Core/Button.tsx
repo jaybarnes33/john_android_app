@@ -1,13 +1,23 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import {
+  Pressable,
+  Touchable,
+  TouchableOpacity,
+  Button as ButtonMain,
+} from "react-native";
 import React from "react";
+import Typography from "./Typography";
+import Colors from "../../constants/Colors";
 
 const Button = ({ text, onPress }: { text: string; onPress: () => void }) => {
   return (
     <TouchableOpacity
-      className="bg-primary p-3 w-[49%] items-center  shadow-2xl rounded"
+      className="bg-primary  py-[14px] w-[49%] items-center justify-center  shadow-2xl rounded-md border border-primary"
       onPress={onPress}
+      activeOpacity={0.8}
     >
-      <Text className="text-white capitalize">{text}</Text>
+      <Typography color={"white"} capitalize size="sm">
+        {text}
+      </Typography>
     </TouchableOpacity>
   );
 };

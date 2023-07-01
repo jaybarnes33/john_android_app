@@ -1,14 +1,12 @@
 import {
   View,
-  Text,
   TouchableOpacity,
   ScrollView,
-  Switch,
+  Text,
   SafeAreaView,
-  Platform,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-
+import Typography from "../components/Core/Typography";
 import React from "react";
 import Input from "../components/Core/Input";
 import Button from "../components/Core/Button";
@@ -17,15 +15,16 @@ import Divider from "../components/Core/Divider";
 import Selector from "../components/Core/Selector";
 import clsx from "clsx";
 import { useRouter } from "expo-router";
+import Switch from "../components/Core/Switch";
 
 const main = () => {
   const router = useRouter();
   return (
     <SafeAreaView className="bg-light">
       <ScrollView className="bg-neutral-50 mt-1">
-        <View className="pt-4 px-6">
-          <Input label="Placeholder" placeholder="Hey" required />
-          <View className="my-3 flex-row  justify-between">
+        <View className="pt-6 px-6">
+          <Input label="Place holder" placeholder="Place holder" required />
+          <View className="my-6 flex-row  justify-between">
             <Button
               text="select sources"
               onPress={() => router.push("Source")}
@@ -36,24 +35,22 @@ const main = () => {
             />
           </View>
         </View>
-        <View className="px-6 ">
-          <View className="pt-4">
-            <Text className="text-lg">Place holder: </Text>
-            <Text className="text-neutral-700">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum
-              omnis consectetur dolorum error laudantium, repellat tempore
-              eveniet dolores praesentium ullam! Possimus autem perferendis
-              provident atque at in corrupti numquam minima.
-            </Text>
+        <View className="px-6">
+          <View>
+            <Typography size="lg" color={Colors.light.texthead}>
+              Place holder :{" "}
+            </Typography>
+            <Typography size="md" color={Colors.light.textsub}>
+              Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,
+            </Typography>
           </View>
-          <View className="pt-4">
-            <Text className="text-lg ">Place holder: </Text>
-            <Text className="text-neutral-700">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum
-              omnis consectetur dolorum error laudantium, repellat tempore
-              eveniet dolores praesentium ullam! Possimus autem perferendis
-              provident atque at in corrupti numquam minima.
-            </Text>
+          <View className="pt-6">
+            <Typography size="lg" color={Colors.light.texthead}>
+              Place holder :{" "}
+            </Typography>
+            <Typography color={Colors.light.textsub} size="md">
+              Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,
+            </Typography>
           </View>
         </View>
 
@@ -67,16 +64,11 @@ const main = () => {
                 ])}
                 key={i}
               >
-                <Text>Place holder</Text>
-                <Switch
-                  className={clsx([
-                    Platform.OS === "ios" && "scale-75",
-                    Platform.OS === "android" && "scale-110",
-                  ])}
-                  value={i % 2 === 0 && true}
-                  thumbColor="white"
-                  trackColor={{ false: "#eee", true: Colors.light.primary }}
-                />
+                <Typography size="md" color={Colors.light.textsub}>
+                  Place holder
+                </Typography>
+
+                <Switch />
               </View>
             ))}
           </View>
@@ -91,7 +83,7 @@ const main = () => {
         </View>
         <View>
           <Divider title="Feature 3" />
-          <View className="flex-row flex-wrap  px-6">
+          <View className="flex-row flex-wrap   px-6">
             {new Array(6).fill(1).map((item, i) => (
               <Selector
                 key={i}
@@ -104,8 +96,8 @@ const main = () => {
         <View>
           <Divider title="Feature 4" />
 
-          <View className="flex-row items-center justify-between px-6">
-            <Text>Place holder</Text>
+          <View className="flex-row items-center pb-6 justify-between px-6">
+            <Typography>Place holder</Typography>
             <View className="flex-row gap-7 items-center">
               <TouchableOpacity>
                 <AntDesign name="caretleft" size={20} color="gray" />
@@ -117,9 +109,11 @@ const main = () => {
             </View>
           </View>
         </View>
-        <View className="bg-neutral-100 mt-4  py-10 px-16">
-          <TouchableOpacity className="bg-primary p-2  items-center  shadow-2xl rounded">
-            <Text className="text-white text-lg">Place holder</Text>
+        <View className="bg-neutral-100 py-7 px-16">
+          <TouchableOpacity className="bg-primary py-3  items-center  shadow-2xl rounded">
+            <Typography size="lg" color="white">
+              Place holder
+            </Typography>
           </TouchableOpacity>
         </View>
       </ScrollView>

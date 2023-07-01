@@ -52,7 +52,7 @@ const AccordionListItem = ({
   return (
     <View>
       <TouchableWithoutFeedback onPress={() => toggleListItem()}>
-        <View className="flex-row border-b border-neutral-200 items-center p-4 bg-white">
+        <View className="flex-row  border-b border-neutral-200 items-center p-4 bg-white">
           {title}
           <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }}>
             <MaterialIcons name="keyboard-arrow-down" size={20} color="black" />

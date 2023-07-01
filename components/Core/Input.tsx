@@ -1,6 +1,6 @@
-import { View, Text, TextInput } from "react-native";
+import { View, TextInput } from "react-native";
 import React from "react";
-
+import Text from "./Typography";
 const Input = ({
   label,
   placeholder,
@@ -12,7 +12,7 @@ const Input = ({
 }) => {
   return (
     <View>
-      <Text>
+      <Text bold size="sm">
         {label} {required && "*"}
       </Text>
       <TextInput
