@@ -10,6 +10,7 @@ export default {
     textsub: "#6C757D",
     texthead: "#212529",
     textheadsub: "#495057",
+    success: "#37E57D",
     tint: tintColorLight,
     tabIconDefault: "#ccc",
     tabIconSelected: tintColorLight,

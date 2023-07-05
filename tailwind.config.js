@@ -11,6 +11,7 @@ module.exports = {
         accent2: "#F6F6F6",
         sub: "#6C757D",
         head: "#212529",
+        success: "#37E57D",
       },
       fontFamily: {
         //Montserrat_400Regular, Montserrat_500Medium, Montserrat_600SemiBold, Montserrat_700Bold

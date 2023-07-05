@@ -9,12 +9,18 @@ const Typography = ({
   color,
   size,
   capitalize,
+  classes,
+  center,
+  uppercase,
 }: {
   children: ReactNode;
   bold?: boolean;
   color?: string;
+  classes?: string;
   size?: string;
+  center?: boolean;
   capitalize?: boolean;
+  uppercase?: boolean;
 }) => {
   return (
     <Text
@@ -22,10 +28,13 @@ const Typography = ({
       allowFontScaling={false}
       className={clsx([
         "font-main",
+        center && "text-center",
         capitalize && "capitalize",
         bold && "font-bolded",
+        uppercase && "uppercase",
         size == "md" && "leading-6 tracking-[0.024px]",
         size == "sm" && "leading-5",
+        classes && classes,
       ])}
       style={{
         fontSize: size ? sizes[size as unknown as number] : sizes.md,
