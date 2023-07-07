@@ -3,6 +3,7 @@ import {
   DarkTheme,
   DefaultTheme,
   ThemeProvider,
+  useRoute,
 } from "@react-navigation/native";
 
 import { SplashScreen, Stack, useRouter } from "expo-router";
@@ -59,6 +60,7 @@ export default function RootLayout() {
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
   const router = useRouter();
+
   return (
     <>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
@@ -73,17 +75,34 @@ function RootLayoutNav() {
               >
                 <View className="bg-white flex-row h-16 justify-between items-center  px-6">
                   <TouchableOpacity onPress={() => router.back()}>
-                    <MaterialIcons
-                      name="chevron-left"
-                      size={24}
-                      color="black"
-                    />
+                    {props.route.name !== "Home" ? (
+                      <MaterialIcons
+                        name="chevron-left"
+                        size={24}
+                        color="black"
+                      />
+                    ) : (
+                      <MaterialIcons name="menu" size={24} color="black" />
+                    )}
                   </TouchableOpacity>
                   <Typography size="xl" capitalize>
                     {" "}
                     {props.route.name}
                   </Typography>
-                  <MaterialIcons name="dots-vertical" size={24} color="black" />
+
+                  {props.route.name !== "Home" ? (
+                    <MaterialIcons
+                      name="dots-vertical"
+                      size={24}
+                      color="black"
+                    />
+                  ) : (
+                    <TouchableOpacity
+                      onPress={() => router.push("Notifications")}
+                    >
+                      <MaterialIcons name="bell" size={24} color="black" />
+                    </TouchableOpacity>
+                  )}
                 </View>
               </SafeAreaView>
             ),

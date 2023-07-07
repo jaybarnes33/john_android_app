@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import Typography from "../components/Core/Typography";
-import React from "react";
+import React, { useState } from "react";
 import Input from "../components/Core/Input";
 import Button from "../components/Core/Button";
 import Colors from "../constants/Colors";
@@ -19,19 +19,28 @@ import Switch from "../components/Core/Switch";
 
 const main = () => {
   const router = useRouter();
+  const [data, setData] = useState({
+    inputValue: "",
+  });
   return (
     <SafeAreaView className="bg-light">
       <ScrollView className="bg-neutral-50 mt-1">
         <View className="pt-6 px-6">
-          <Input label="Place holder" placeholder="Place holder" required />
+          <Input
+            label="Place holder"
+            placeholder="Place holder"
+            required
+            value={data.inputValue}
+            onChange={setData}
+          />
           <View className="my-6 flex-row  justify-between">
             <Button
               text="select sources"
-              onPress={() => router.push("Source")}
+              onPress={() => router.push("Feature2Selection")}
             />
             <Button
               text="select destinations"
-              onPress={() => console.log(`pressed`)}
+              onPress={() => router.push("Feature2Selection")}
             />
           </View>
         </View>

@@ -6,10 +6,12 @@ import { FontAwesome5, Ionicons } from "@expo/vector-icons";
 import { sizes } from "../constants/sizes";
 import UserStatus from "../components/App/UserStatus";
 import Switch from "../components/Core/Switch";
+import { useRouter } from "expo-router";
 
 const Home = () => {
+  const { push } = useRouter();
   return (
-    <ScrollView className="mt-1" showsVerticalScrollIndicator={false}>
+    <ScrollView className="bg-light mt-1" showsVerticalScrollIndicator={false}>
       <UserStatus />
       <View className="mt-8 border-2  border-gray-200 bg-white">
         {new Array(5).fill(1).map((_, i) => (
@@ -27,7 +29,7 @@ const Home = () => {
                   Holder: Holder
                 </Typography>
               </View>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => push("Feature2a")}>
                 <Ionicons
                   name="chevron-forward"
                   size={20}

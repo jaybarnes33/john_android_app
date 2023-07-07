@@ -65,13 +65,13 @@ const OTPScreen = () => {
             We’ve sent an SMS with an activavtion code to your phone +355 69 344
             5342.
           </Typography>
-          <View className="flex-row gap-3 my-2">
+          <View className="flex-row justify-between w-full  my-2">
             {otp.map((digit, index) => (
               <TextInput
                 key={index}
                 keyboardType="numeric"
                 maxLength={1}
-                className="w-[44px] rounded-md h-[56px] text-center border border-gray-200"
+                className="w-[44px] md:w-[105px] rounded-md h-[56px] md:h-[126px] text-center md:text-4xl border border-gray-200"
                 value={digit}
                 onChangeText={(value) => handleOtpChange(index, value)}
                 //@ts-ignore

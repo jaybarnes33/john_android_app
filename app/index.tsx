@@ -28,11 +28,11 @@ const index = () => {
 
   const [current, setCurrent] = useState(0);
   return (
-    <Screen>
+    <>
       <View className="justify-center h-[85vh]">
         {current !== 0 && (
           <TouchableOpacity
-            className="absolute top-0 left-5"
+            className="absolute top-0 left-5 mt-14"
             onPress={() => setCurrent((current) => current - 1)}
           >
             <Ionicons name="chevron-back" size={24} />
@@ -83,10 +83,10 @@ const index = () => {
         </View>
       </View>
       <Image
-        className="-mb-[10rem]"
+        className="absolute bottom-0 w-full left-0"
         source={require("../assets/images/onboarding.png")}
       />
-    </Screen>
+    </>
   );
 };
 

@@ -7,6 +7,7 @@ export default {
     background: "#fff",
     accent: "#EDEDED",
     red: "#FF8F8F",
+    danger: "#FF7E7E",
     textsub: "#6C757D",
     texthead: "#212529",
     textheadsub: "#495057",

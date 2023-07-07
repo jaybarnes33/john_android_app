@@ -11,7 +11,7 @@ const UserStatus = () => {
       <View>
         <Typography classes="mb-2">Jeisson Brown</Typography>
         <Typography classes="mt-1" color={Colors.light.textsub}>
-          +355678934950{" "}
+          +355678934950
         </Typography>
         <View>
           <Typography color={Colors.light.textsub} classes="mt-1">
@@ -26,7 +26,7 @@ const UserStatus = () => {
         </View>
       </View>
       <View className="items-center">
-        <View className="h-16 w-16   items-center justify-center rounded-full  border-success border-2">
+        <View className="h-16 w-16   items-center justify-center rounded-full  border-success  border border-t-2 ">
           <FontAwesome5 name="check" size={50} color={Colors.light.success} />
         </View>
         <Typography uppercase color={"#3acc63"} size="sm">

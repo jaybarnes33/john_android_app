@@ -1,28 +1,51 @@
 import { View, TextInput } from "react-native";
 import React, { Dispatch, SetStateAction, useState } from "react";
-import Text from "./Typography";
+
 import Typography from "./Typography";
 import clsx from "clsx";
 import Colors from "../../constants/Colors";
+import { AntDesign } from "@expo/vector-icons";
 const Input = ({
   label,
   placeholder,
-
+  value,
+  onChange,
   required,
 }: {
   label: string;
+  value: string;
+  onChange: Dispatch<SetStateAction<{ inputValue: string }>>;
   placeholder: string;
   required: boolean;
 }) => {
   return (
     <View>
-      <Text bold size="sm">
+      <Typography
+        bold
+        size="sm"
+        color={!value ? Colors.light.danger : "#1a1a1a"}
+      >
         {label} {required && "*"}
-      </Text>
+      </Typography>
       <TextInput
         className="border-b py-2 border-neutral-500"
         placeholder={placeholder}
+        onChangeText={(text) =>
+          onChange((prev) => ({ ...prev, inputValue: text }))
+        }
       />
+      {!value && (
+        <View className="mt-2 items-center flex-row ">
+          <AntDesign
+            name="exclamationcircleo"
+            size={14}
+            color={Colors.light.danger}
+          />
+          <Typography size="sm" classes="mx-2" color={Colors.light.danger}>
+            Value is required
+          </Typography>
+        </View>
+      )}
     </View>
   );
 };
