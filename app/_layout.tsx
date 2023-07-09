@@ -6,15 +6,9 @@ import {
   useRoute,
 } from "@react-navigation/native";
 
-import { SplashScreen, Stack, useRouter } from "expo-router";
+import { SplashScreen, Stack, useNavigation, useRouter } from "expo-router";
 import { useEffect } from "react";
-import {
-  Platform,
-  Text,
-  TouchableOpacity,
-  View,
-  useColorScheme,
-} from "react-native";
+import { Platform, TouchableOpacity, View, useColorScheme } from "react-native";
 import { MaterialCommunityIcons as MaterialIcons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
@@ -25,6 +19,7 @@ import {
   Montserrat_700Bold,
 } from "@expo-google-fonts/montserrat";
 import Typography from "../components/Core/Typography";
+import { Drawer } from "../components/Drawer";
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
@@ -61,6 +56,7 @@ function RootLayoutNav() {
   const colorScheme = useColorScheme();
   const router = useRouter();
 
+  const navigation = useNavigation();
   return (
     <>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
@@ -75,39 +71,24 @@ function RootLayoutNav() {
               >
                 <View className="bg-white flex-row h-16 justify-between items-center  px-6">
                   <TouchableOpacity onPress={() => router.back()}>
-                    {props.route.name !== "Home" ? (
-                      <MaterialIcons
-                        name="chevron-left"
-                        size={24}
-                        color="black"
-                      />
-                    ) : (
-                      <MaterialIcons name="menu" size={24} color="black" />
-                    )}
-                  </TouchableOpacity>
-                  <Typography size="xl" capitalize>
-                    {" "}
-                    {props.route.name}
-                  </Typography>
-
-                  {props.route.name !== "Home" ? (
                     <MaterialIcons
-                      name="dots-vertical"
+                      name="chevron-left"
                       size={24}
                       color="black"
                     />
-                  ) : (
-                    <TouchableOpacity
-                      onPress={() => router.push("Notifications")}
-                    >
-                      <MaterialIcons name="bell" size={24} color="black" />
-                    </TouchableOpacity>
-                  )}
+                  </TouchableOpacity>
+
+                  <Typography size="xl" capitalize>
+                    {props.route.name}
+                  </Typography>
+
+                  <MaterialIcons name="dots-vertical" size={24} color="black" />
                 </View>
               </SafeAreaView>
             ),
           }}
         >
+          <Stack.Screen name="drawer" options={{ headerShown: false }} />
           <Stack.Screen name="Otp" options={{ headerShown: false }} />
           <Stack.Screen name="Auth" options={{ headerShown: false }} />
           <Stack.Screen name="index" options={{ headerShown: false }} />

@@ -6,16 +6,16 @@ import {
   SafeAreaView,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import Typography from "../components/Core/Typography";
+import Typography from "../../../components/Core/Typography";
 import React, { useState } from "react";
-import Input from "../components/Core/Input";
-import Button from "../components/Core/Button";
-import Colors from "../constants/Colors";
-import Divider from "../components/Core/Divider";
-import Selector from "../components/Core/Selector";
+import Input from "../../../components/Core/Input";
+import Button from "../../../components/Core/Button";
+import Colors from "../../../constants/Colors";
+import Divider from "../../../components/Core/Divider";
+import Selector from "../../../components/Core/Selector";
 import clsx from "clsx";
 import { useRouter } from "expo-router";
-import Switch from "../components/Core/Switch";
+import Switch from "../../../components/Core/Switch";
 
 const main = () => {
   const router = useRouter();
@@ -36,11 +36,11 @@ const main = () => {
           <View className="my-6 flex-row  justify-between">
             <Button
               text="select sources"
-              onPress={() => router.push("Feature2Selection")}
+              onPress={() => router.push("/drawer/Feature2/Feature2Selection")}
             />
             <Button
               text="select destinations"
-              onPress={() => router.push("Feature2Selection")}
+              onPress={() => router.push("/drawer/Feature2/Feature2Selection")}
             />
           </View>
         </View>
@@ -119,7 +119,11 @@ const main = () => {
           </View>
         </View>
         <View className="bg-neutral-100 py-7 px-16">
-          <TouchableOpacity className="bg-primary py-3  items-center  shadow-2xl rounded">
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() => router.push("Feature3a")}
+            className="bg-primary py-3  items-center  shadow-2xl rounded"
+          >
             <Typography size="lg" color="white">
               Place holder
             </Typography>
