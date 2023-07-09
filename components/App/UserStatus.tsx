@@ -2,7 +2,7 @@ import { View, Text } from "react-native";
 import React from "react";
 import Typography from "../Core/Typography";
 import Colors from "../../constants/Colors";
-import { FontAwesome5 } from "@expo/vector-icons";
+import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
 import { sizes } from "../../constants/sizes";
 
 const UserStatus = () => {
@@ -26,8 +26,8 @@ const UserStatus = () => {
         </View>
       </View>
       <View className="items-center">
-        <View className="h-16 w-16   items-center justify-center rounded-full  border-success  border border-t-2 ">
-          <FontAwesome5 name="check" size={50} color={Colors.light.success} />
+        <View className="h-16 w-16   items-center justify-center rounded-full  border-[#37E67D]  border border-t-2 ">
+          <AntDesign name="check" size={60} color={Colors.light.success} />
         </View>
         <Typography uppercase color={"#3acc63"} size="sm">
           Running

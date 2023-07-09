@@ -1,11 +1,11 @@
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import React from "react";
-import Typography from "../components/Core/Typography";
-import Colors from "../constants/Colors";
+import Typography from "../../components/Core/Typography";
+import Colors from "../../constants/Colors";
 import { FontAwesome5, Ionicons } from "@expo/vector-icons";
-import { sizes } from "../constants/sizes";
-import UserStatus from "../components/App/UserStatus";
-import Switch from "../components/Core/Switch";
+import { sizes } from "../../constants/sizes";
+import UserStatus from "../../components/App/UserStatus";
+import Switch from "../../components/Core/Switch";
 import { useRouter } from "expo-router";
 
 const Home = () => {
@@ -29,7 +29,7 @@ const Home = () => {
                   Holder: Holder
                 </Typography>
               </View>
-              <TouchableOpacity onPress={() => push("Feature2a")}>
+              <TouchableOpacity onPress={() => push("/drawer/Feature2")}>
                 <Ionicons
                   name="chevron-forward"
                   size={20}

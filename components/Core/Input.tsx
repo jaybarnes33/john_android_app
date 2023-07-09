@@ -54,17 +54,21 @@ export const FocusInput = ({
   label,
   placeholder,
   onChange,
+  field,
+  textarea,
 }: {
   label: string;
-  onChange: Dispatch<SetStateAction<{ country: string; phone: string }>>;
+  field: string;
+  onChange: Dispatch<SetStateAction<unknown>>;
   placeholder?: string;
+  textarea?: boolean;
 }) => {
   const [focused, setFocused] = useState(false);
   return (
     <View
       className={clsx([
         "border mt-5 mb-1 py-1 px-2 relative border-gray-200 rounded",
-        focused && "border-primary",
+        focused && "border-primary h-full",
       ])}
     >
       <View className="px-3 -mt-2 absolute mx-2 bg-white">
@@ -76,9 +80,15 @@ export const FocusInput = ({
         </Typography>
       </View>
       <TextInput
-        onChangeText={(text) => onChange((prev) => ({ ...prev, phone: text }))}
-        onFocus={() => setFocused(true)}
-        onBlur={() => setFocused(false)}
+        className="h-7"
+        onChangeText={(text) =>
+          onChange((prev: Record<string, string>) => ({
+            ...prev,
+            [field]: text,
+          }))
+        }
+        // onFocus={() => setFocused(true)}
+        // onBlur={() => setFocused(false)}
       />
     </View>
   );

@@ -47,7 +47,7 @@ const OTPScreen = () => {
     // Logic to verify the OTP
     // You can implement your own logic here, like making an API call to validate the OTP
     console.log("Verifying OTP:", enteredOtp);
-    router.push("Home");
+    router.push("/drawer");
   };
 
   const handleResendOtp = () => {

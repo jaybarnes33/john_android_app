@@ -75,6 +75,7 @@ const Auth = () => {
             <FocusInput
               label="Phone number"
               placeholder="Enter Phone"
+              field="phone"
               onChange={setData}
             />
             {error.phone && (

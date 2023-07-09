@@ -1,11 +1,11 @@
 import { View, Platform } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native";
-import AccordionListItem from "../components/Accordion/AccordionItem";
+import AccordionListItem from "../../../components/Accordion/AccordionItem";
 import clsx from "clsx";
-import Colors from "../constants/Colors";
-import Typography from "../components/Core/Typography";
-import Switch from "../components/Core/Switch";
+import Colors from "../../../constants/Colors";
+import Typography from "../../../components/Core/Typography";
+import Switch from "../../../components/Core/Switch";
 
 const Source = () => {
   return (

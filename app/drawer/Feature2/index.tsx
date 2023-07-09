@@ -1,13 +1,13 @@
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import React from "react";
 
-import Typography from "../components/Core/Typography";
+import Typography from "../../../components/Core/Typography";
 
-import Colors from "../constants/Colors";
+import Colors from "../../../constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 
-const Feature2a = () => {
+const Feature2 = () => {
   const { push } = useRouter();
   return (
     <View className="flex-1">
@@ -32,7 +32,7 @@ const Feature2a = () => {
             <TouchableOpacity
               className="mt-auto"
               activeOpacity={0.7}
-              onPress={() => push("Feature2b")}
+              onPress={() => push("/drawer/Feature2/Feature2b")}
             >
               <Ionicons
                 name="chevron-forward"
@@ -53,4 +53,4 @@ const Feature2a = () => {
   );
 };
 
-export default Feature2a;
+export default Feature2;
