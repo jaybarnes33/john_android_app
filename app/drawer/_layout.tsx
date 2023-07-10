@@ -26,7 +26,7 @@ export default function RootLayout() {
           >
             <View className="bg-white flex-row h-16 justify-between items-center  px-6">
               {props.route.name !== "index" ? (
-                <TouchableOpacity onPress={() => router.back()}>
+                <TouchableOpacity onPress={() => router.push("index")}>
                   <MaterialIcons name="chevron-left" size={24} color="black" />
                 </TouchableOpacity>
               ) : (
@@ -98,6 +98,30 @@ export default function RootLayout() {
         name="Feature3"
         options={{
           title: "Feature 3",
+          drawerIcon: (props) =>
+            props.focused ? (
+              <Ionicons name="add" size={24} color={Colors.light.textsub} />
+            ) : (
+              <Ionicons name="add" size={24} color={Colors.light.textsub} />
+            ),
+        }}
+      />
+      <Drawer.Screen
+        name="Feature4"
+        options={{
+          title: "Feature 4",
+          drawerIcon: (props) =>
+            props.focused ? (
+              <Ionicons name="add" size={24} color={Colors.light.textsub} />
+            ) : (
+              <Ionicons name="add" size={24} color={Colors.light.textsub} />
+            ),
+        }}
+      />
+      <Drawer.Screen
+        name="Feature5"
+        options={{
+          title: "Feature 5",
           drawerIcon: (props) =>
             props.focused ? (
               <Ionicons name="add" size={24} color={Colors.light.textsub} />
