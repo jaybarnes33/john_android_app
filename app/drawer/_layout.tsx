@@ -130,6 +130,30 @@ export default function RootLayout() {
             ),
         }}
       />
+      <Drawer.Screen
+        name="Feature6"
+        options={{
+          title: "Feature 6",
+          drawerIcon: (props) =>
+            props.focused ? (
+              <Ionicons name="add" size={24} color={Colors.light.textsub} />
+            ) : (
+              <Ionicons name="add" size={24} color={Colors.light.textsub} />
+            ),
+        }}
+      />
+      <Drawer.Screen
+        name="Feature7"
+        options={{
+          title: "Feature 7",
+          drawerIcon: (props) =>
+            props.focused ? (
+              <Ionicons name="add" size={24} color={Colors.light.textsub} />
+            ) : (
+              <Ionicons name="add" size={24} color={Colors.light.textsub} />
+            ),
+        }}
+      />
     </Drawer>
   );
 }
