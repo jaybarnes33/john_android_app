@@ -28,7 +28,7 @@ const index = () => {
 
   const [current, setCurrent] = useState(0);
   return (
-    <>
+    <View className="bg-white h-screen">
       <View className="justify-center h-[85vh]">
         {current !== 0 && (
           <TouchableOpacity
@@ -86,7 +86,7 @@ const index = () => {
         className="absolute bottom-0 w-full left-0"
         source={require("../assets/images/onboarding.png")}
       />
-    </>
+    </View>
   );
 };
 

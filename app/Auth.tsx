@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import Screen from "../components/Screen";
 import BackButton from "../components/Core/BackButton";
 import Typography from "../components/Core/Typography";
@@ -16,7 +16,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { FocusInput } from "../components/Core/Input";
 import { useRouter } from "expo-router";
 import NextButton from "../components/Core/NextButton";
-
+import CountryPicker from "react-native-country-picker-modal";
 const Auth = () => {
   const router = useRouter();
   const [data, setData] = useState({
@@ -53,13 +53,32 @@ const Auth = () => {
             Please confirm your country code and enter your phone number
           </Typography>
           <View>
-            <View className="px-2 py-1 flex-row items-center w-full mb-1  border border-gray-200 rounded focus:outline-blue-500">
-              <TextInput
+            <View className="px-2 py-1 justify-between flex-row items-center w-full mb-1  border border-gray-200 rounded focus:outline-blue-500">
+              {/* <TextInput
                 onChangeText={(text) =>
                   setData((data) => ({ ...data, country: text }))
-                }
+                }xx
                 placeholder="Select country"
                 className="flex-1 focus:outline-blue-500 "
+              /> */}
+              <CountryPicker
+                countryCode="GH"
+                withCountryNameButton
+                withAlphaFilter
+                withCallingCode
+                theme={{
+                  fontFamily: "Montserrat_500Medium",
+                }}
+                containerButtonStyle={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+                onSelect={(country) =>
+                  setData((prev) => ({
+                    ...prev,
+                    country: country.callingCode[0],
+                  }))
+                }
               />
               <Ionicons
                 name="chevron-forward"
@@ -76,7 +95,10 @@ const Auth = () => {
               label="Phone number"
               placeholder="Enter Phone"
               field="phone"
-              onChange={setData}
+              side={data.country}
+              onChange={
+                setData as Dispatch<SetStateAction<Record<string, string>>>
+              }
             />
             {error.phone && (
               <Typography color="red" size="xs">

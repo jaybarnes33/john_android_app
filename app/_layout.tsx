@@ -19,7 +19,6 @@ import {
   Montserrat_700Bold,
 } from "@expo-google-fonts/montserrat";
 import Typography from "../components/Core/Typography";
-import { Drawer } from "../components/Drawer";
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
@@ -56,10 +55,10 @@ function RootLayoutNav() {
   const colorScheme = useColorScheme();
   const router = useRouter();
 
-  const navigation = useNavigation();
   return (
     <>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+        <View></View>
         <Stack
           initialRouteName="main"
           screenOptions={{
