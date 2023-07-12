@@ -10,7 +10,6 @@ import Typography from "../Core/Typography";
 import { Ionicons } from "@expo/vector-icons";
 import Colors from "../../constants/Colors";
 
-const Item = () => {};
 const TabTwo = () => {
   return (
     <View className="h-full">

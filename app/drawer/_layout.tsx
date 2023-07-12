@@ -17,6 +17,7 @@ export default function RootLayout() {
   return (
     <Drawer
       screenOptions={{
+        sceneContainerStyle: { backgroundColor: "#eee" },
         header: (props) => (
           <SafeAreaView
             className={clsx([
