@@ -12,7 +12,7 @@ import Typography from "../components/Core/Typography";
 import Colors from "../constants/Colors";
 import NextButton from "../components/Core/NextButton";
 import BackButton from "../components/Core/BackButton";
-import { useRouter } from "expo-router";
+import { useNavigation, useRouter } from "expo-router";
 import clsx from "clsx";
 import { useAuth } from "../hooks/useAuth";
 
@@ -45,14 +45,15 @@ const OTPScreen = () => {
 
   const { setAuthed } = useAuth();
 
-  const router = useRouter();
+  const router = useNavigation();
   const handleVerifyOtp = () => {
     const enteredOtp = otp.join("");
     // Logic to verify the OTP
     // You can implement your own logic here, like making an API call to validate the OTP
     console.log("Verifying OTP:", enteredOtp);
     setAuthed(true);
-    router.push("/drawer");
+    //@ts-ignore
+    router.navigate("(drawer)", { screen: "index" });
   };
 
   const handleResendOtp = () => {

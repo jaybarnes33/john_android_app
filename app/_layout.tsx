@@ -93,7 +93,7 @@ function RootLayoutNav() {
             ),
           }}
         >
-          <Stack.Screen name="drawer" options={{ headerShown: false }} />
+          <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
           <Stack.Screen name="Otp" options={{ headerShown: false }} />
           <Stack.Screen name="Auth" options={{ headerShown: false }} />
           <Stack.Screen name="index" options={{ headerShown: false }} />
