@@ -59,7 +59,7 @@ export const FocusInput = ({
 }: {
   label: string;
   field: string;
-  onChange: Dispatch<SetStateAction<Record<string, string>>>;
+  onChange: Dispatch<SetStateAction<string>>;
   placeholder?: string;
   textarea?: boolean;
   side?: string;
@@ -81,15 +81,12 @@ export const FocusInput = ({
         </Typography>
       </View>
       <View className="flex-row items-center">
-        <Typography>+{side}</Typography>
+        <View className="pl-2">
+          <Typography>{side}</Typography>
+        </View>
         <TextInput
-          className="h-8 flex-1 border-l border-gray-300 mx-2 px-2 font-main"
-          onChangeText={(text) =>
-            onChange((prev: Record<string, string>) => ({
-              ...prev,
-              [field]: text,
-            }))
-          }
+          className="h-8 flex-1  border-gray-300 mx-2 px-2 font-main"
+          onChangeText={(text) => onChange(text)}
           keyboardType="numeric"
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}

@@ -23,7 +23,7 @@ const index = () => {
       text: "Fastest platform online delivering messages",
     },
   ];
-
+  console.log("hey");
   const router = useRouter();
 
   const [current, setCurrent] = useState(0);
@@ -41,7 +41,7 @@ const index = () => {
 
         <View className="px-20 gap-y-2 mt-[90%]">
           <Typography
-            size="lg"
+            size="xl"
             color={Colors.light.primary}
             bold
             center

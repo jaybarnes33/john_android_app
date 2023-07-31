@@ -11,7 +11,10 @@ import { useRouter } from "expo-router";
 const Home = () => {
   const { push } = useRouter();
   return (
-    <ScrollView className="bg-light mt-1" showsVerticalScrollIndicator={false}>
+    <ScrollView
+      className="bg-light border-t border-t-[#3ACC63]"
+      showsVerticalScrollIndicator={false}
+    >
       <UserStatus />
       <View className="mt-8 border-2  border-gray-200 bg-white">
         {new Array(5).fill(1).map((_, i) => (

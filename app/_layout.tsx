@@ -8,7 +8,13 @@ import {
 
 import { SplashScreen, Stack, useNavigation, useRouter } from "expo-router";
 import { useEffect } from "react";
-import { Platform, TouchableOpacity, View, useColorScheme } from "react-native";
+import {
+  Platform,
+  Text,
+  TouchableOpacity,
+  View,
+  useColorScheme,
+} from "react-native";
 import { MaterialCommunityIcons as MaterialIcons } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
@@ -19,6 +25,7 @@ import {
   Montserrat_700Bold,
 } from "@expo-google-fonts/montserrat";
 import Typography from "../components/Core/Typography";
+import { AuthProvider } from "../hooks/useAuth";
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
@@ -56,11 +63,10 @@ function RootLayoutNav() {
   const router = useRouter();
 
   return (
-    <>
+    <AuthProvider>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <View></View>
         <Stack
-          initialRouteName="main"
+          initialRouteName="index"
           screenOptions={{
             header: (props) => (
               <SafeAreaView
@@ -94,6 +100,6 @@ function RootLayoutNav() {
           <Stack.Screen name="modal" options={{ presentation: "modal" }} />
         </Stack>
       </ThemeProvider>
-    </>
+    </AuthProvider>
   );
 }

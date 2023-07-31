@@ -13,11 +13,13 @@ import Colors from "../constants/Colors";
 import NextButton from "../components/Core/NextButton";
 import BackButton from "../components/Core/BackButton";
 import { useRouter } from "expo-router";
+import clsx from "clsx";
+import { useAuth } from "../hooks/useAuth";
 
 const OTPScreen = () => {
-  const [otp, setOtp] = useState(["", "", "", "", "", ""]);
+  const [otp, setOtp] = useState(["", "", "", "", ""]);
   const otpInputRefs = useRef<TextInput[]>([]);
-
+  const [active, setActive] = useState(0);
   const handleOtpChange = (index: number, value: string) => {
     const newOtp = [...otp];
 
@@ -41,12 +43,15 @@ const OTPScreen = () => {
     setOtp(newOtp);
   };
 
+  const { setAuthed } = useAuth();
+
   const router = useRouter();
   const handleVerifyOtp = () => {
     const enteredOtp = otp.join("");
     // Logic to verify the OTP
     // You can implement your own logic here, like making an API call to validate the OTP
     console.log("Verifying OTP:", enteredOtp);
+    setAuthed(true);
     router.push("/drawer");
   };
 
@@ -61,17 +66,24 @@ const OTPScreen = () => {
         <BackButton />
 
         <KeyboardAvoidingView className="my-24">
+          <Typography center size="xl">
+            Enter code
+          </Typography>
           <Typography size="sm">
-            We’ve sent an SMS with an activavtion code to your phone +355 69 344
+            We’ve sent an SMS with an activation code to your phone +355 69 344
             5342.
           </Typography>
-          <View className="flex-row justify-between w-full  my-2">
+          <View className="flex-row justify-between w-full  mt-6  mx-auto max-w-[80%]">
             {otp.map((digit, index) => (
               <TextInput
                 key={index}
                 keyboardType="numeric"
+                onFocus={() => setActive(index)}
                 maxLength={1}
-                className="w-[44px] md:w-[105px] rounded-md h-[56px] md:h-[126px] text-center md:text-4xl border border-gray-200"
+                className={clsx([
+                  "w-[44px]  md:w-[105px] rounded-md h-[56px] md:h-[126px] text-center md:text-4xl border-2 border-[#495057]",
+                  active === index && "border-blue-500",
+                ])}
                 value={digit}
                 onChangeText={(value) => handleOtpChange(index, value)}
                 //@ts-ignore
