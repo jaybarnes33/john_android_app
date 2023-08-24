@@ -37,8 +37,8 @@ const MainDrawer = withLayoutContext<DrawerNavigationOptions, typeof Navigator>(
 function CustomDrawerContent(props: DrawerContentComponentProps) {
   return (
     <DrawerContentScrollView {...props} stickyHeaderIndices={[0]}>
-      <View className="-top-[15%]">
-        <View className="h-[35%] bg-blue-500 ] p-6">
+      <View className="-top-[10%]">
+        <View className="h-[25%] mt-3 bg-blue-500 ] p-6">
           <SafeAreaView>
             <View className="h-12 w-12 bg-slate-600 border border-white rounded-full"></View>
             <View className="mt-4">
@@ -52,6 +52,20 @@ function CustomDrawerContent(props: DrawerContentComponentProps) {
           </SafeAreaView>
         </View>
         <DrawerItemList {...props} />
+        <View className="w-[80%] border-t border-[#bfbfbf] mt-12 p-6 space-y-5">
+          <View className="flex-row items-center">
+            <Feather name="plus" color="#bfbfbf" size={24} />
+            <Typography size="sm" classes="ml-[32px]">
+              Settings
+            </Typography>
+          </View>
+          <View className="flex-row items-center ">
+            <Feather name="plus" color="#bfbfbf" size={24} />
+            <Typography size="sm" classes="ml-[32px]">
+              Logout
+            </Typography>
+          </View>
+        </View>
       </View>
     </DrawerContentScrollView>
   );
@@ -62,7 +76,70 @@ export function Drawer(props) {
   const router = useRouter();
   console.log(props);
   return (
-    <MainDrawer initialRouteName="index" drawerContent={CustomDrawerContent}>
+    <MainDrawer
+      initialRouteName="index"
+      drawerContent={CustomDrawerContent}
+      screenOptions={{
+        sceneContainerStyle: { backgroundColor: "#eee" },
+
+        drawerContentStyle: { backgroundColor: "white" },
+        drawerLabelStyle: {
+          color: Colors.light.textsub,
+        },
+        drawerIcon: (props) => (
+          <Feather name="plus" size={24} color="#bfbfbf" />
+        ),
+        //@ts-ignore
+        header: (props) => (
+          <SafeAreaView
+            className={clsx([
+              Platform.OS === "android" ? "h-24 justify-center" : "",
+              "bg-white",
+            ])}
+          >
+            <View className="bg-white flex-row h-16 justify-between items-center  px-6">
+              {props.route.name !== "index" ? (
+                <TouchableOpacity
+                  onPress={() =>
+                    //@ts-ignore
+                    navigation.navigate("(drawer)", { screen: "index" })
+                  }
+                >
+                  <MaterialCommunityIcons
+                    name="chevron-left"
+                    size={24}
+                    color="black"
+                  />
+                </TouchableOpacity>
+              ) : (
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.dispatch(DrawerActions.toggleDrawer())
+                  }
+                >
+                  <MaterialCommunityIcons name="menu" size={24} color="black" />
+                </TouchableOpacity>
+              )}
+              <Typography size="xl" capitalize>
+                {props.route.name}
+              </Typography>
+
+              {props.route.name !== "index" ? (
+                <MaterialCommunityIcons
+                  name="dots-vertical"
+                  size={24}
+                  color="black"
+                />
+              ) : (
+                <TouchableOpacity onPress={() => router.push("Notifications")}>
+                  <MaterialCommunityIcons name="bell" size={24} color="black" />
+                </TouchableOpacity>
+              )}
+            </View>
+          </SafeAreaView>
+        ),
+      }}
+    >
       <MainDrawer.Screen
         name="index"
         options={{
@@ -115,6 +192,18 @@ export function Drawer(props) {
         name="Feature7"
         options={{
           drawerLabel: (props) => <Typography size="sm">Feature 7</Typography>,
+        }}
+      />
+      <MainDrawer.Screen
+        name="Feature8"
+        options={{
+          drawerLabel: (props) => <Typography size="sm">Feature 8</Typography>,
+        }}
+      />
+      <MainDrawer.Screen
+        name="Feature9"
+        options={{
+          drawerLabel: (props) => <Typography size="sm">Feature 9</Typography>,
         }}
       />
     </MainDrawer>
