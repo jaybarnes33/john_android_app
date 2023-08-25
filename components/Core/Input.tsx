@@ -52,13 +52,13 @@ const Input = ({
 
 export const FocusInput = ({
   label,
-
+  placeholder,
   onChange,
-  field,
+
   side,
 }: {
   label: string;
-  field: string;
+
   onChange: Dispatch<SetStateAction<string>>;
   placeholder?: string;
   textarea?: boolean;
@@ -68,7 +68,7 @@ export const FocusInput = ({
   return (
     <View
       className={clsx([
-        "border mt-5 mb-1 py-1 px-2 relative border-gray-200 rounded",
+        "border mt-5 mb-1 py-1 px-2 relative min-w-[48%] border-[#bbbbbb] rounded",
         focused && "border-primary",
       ])}
     >
@@ -85,9 +85,9 @@ export const FocusInput = ({
           <Typography>{side}</Typography>
         </View>
         <TextInput
+          placeholder={placeholder}
           className="h-8 flex-1  border-gray-300 mx-2 px-2 font-main"
           onChangeText={(text) => onChange(text)}
-          keyboardType="numeric"
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
         />

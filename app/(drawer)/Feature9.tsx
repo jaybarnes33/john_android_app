@@ -9,20 +9,22 @@ import { Ionicons } from "@expo/vector-icons";
 const Feature6 = () => {
   return (
     <View className="h-screen bg-white mt-1 p-6 ">
-      <ScrollView>
-        {new Array(7).fill(0).map((_, i) => (
-          <View className="flex-row items-center" key={i}>
-            <Typography>{i + 1}. &nbsp;</Typography>
-            <Input />
-          </View>
-        ))}
-      </ScrollView>
       <TouchableOpacity
-        activeOpacity={0.7}
-        className="bg-primary flex  w-16 h-16 rounded-full justify-center items-center mt-7"
+        className="bg-primary  py-[14px] w-full items-center justify-center  shadow-2xl rounded-md border border-primary"
+        activeOpacity={0.8}
       >
-        <Ionicons name="add" size={24} color="white" />
+        <Typography color={"white"} capitalize size="sm">
+          Holder
+        </Typography>
       </TouchableOpacity>
+      <View className="py-6">
+        <Typography size="lg" bold>
+          Place holder 1:
+        </Typography>
+        <Typography size="md">
+          Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,Placeholder,
+        </Typography>
+      </View>
     </View>
   );
 };

@@ -15,7 +15,7 @@ import {
 import { useNavigation, useRouter, withLayoutContext } from "expo-router";
 import AccordionListItem from "../Accordion/AccordionItem";
 import Typography from "../Core/Typography";
-import { Platform, TouchableOpacity, View } from "react-native";
+import { Platform, Pressable, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Feather, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import Colors from "../../constants/Colors";
@@ -35,6 +35,7 @@ const MainDrawer = withLayoutContext<DrawerNavigationOptions, typeof Navigator>(
 
 //@ts-ignore
 function CustomDrawerContent(props: DrawerContentComponentProps) {
+  const router = useRouter();
   return (
     <DrawerContentScrollView {...props} stickyHeaderIndices={[0]}>
       <View className="-top-[10%]">
@@ -53,12 +54,15 @@ function CustomDrawerContent(props: DrawerContentComponentProps) {
         </View>
         <DrawerItemList {...props} />
         <View className="w-[80%] border-t border-[#bfbfbf] mt-12 p-6 space-y-5">
-          <View className="flex-row items-center">
+          <Pressable
+            onPress={() => router.push("Settings")}
+            className="flex-row items-center"
+          >
             <Feather name="plus" color="#bfbfbf" size={24} />
             <Typography size="sm" classes="ml-[32px]">
               Settings
             </Typography>
-          </View>
+          </Pressable>
           <View className="flex-row items-center ">
             <Feather name="plus" color="#bfbfbf" size={24} />
             <Typography size="sm" classes="ml-[32px]">

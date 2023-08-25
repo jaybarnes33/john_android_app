@@ -62,7 +62,6 @@ const Auth = () => {
             <FocusInput
               label="Phone number"
               placeholder="Enter Phone"
-              field="phone"
               side={`${country.flag} ${country.phone}`}
               onChange={setPhone as Dispatch<SetStateAction<string>>}
             />
@@ -73,6 +72,9 @@ const Auth = () => {
             )}
           </View>
         </View>
+        <Typography center classes="my-6 underline" size="sm" color="#7a8dff">
+          Login with QR code
+        </Typography>
         <NextButton onPress={handleSubmit} />
       </KeyboardAvoidingView>
     </Screen>
