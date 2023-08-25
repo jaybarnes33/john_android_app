@@ -15,7 +15,7 @@ const Notifications = () => {
       <ScrollView>
         {new Array(5).fill(0).map((_, i) => (
           <View>
-            <View className="flex-row h-14 items-center mb-2 px-6 bg-accent">
+            <View className="flex-row h-14 items-center mb-2 px-6 bg-[#ededed]">
               <FontAwesome5
                 name="calendar-minus"
                 color={Colors.light.textsub}

@@ -9,18 +9,20 @@ const UserStatus = () => {
   return (
     <View className="bg-white p-6 flex-row justify-between items-center w-full border-b-2 border-gray-200">
       <View>
-        <Typography classes="mb-2">Jeisson Brown</Typography>
-        <Typography classes="mt-1" color={Colors.light.textsub}>
+        <Typography classes="mb-2" size="lg">
+          Jeisoon Brown
+        </Typography>
+        <Typography classes="mt-1 mb-1" color={Colors.light.textsub}>
           +355678934950
         </Typography>
         <View>
-          <Typography color={Colors.light.textsub} classes="mt-1">
+          <Typography color={Colors.light.textsub} classes="my-1">
             ID:908738933
           </Typography>
-          <Typography color={Colors.light.textsub} classes="mt-1">
+          <Typography color={Colors.light.textsub} classes="my-1">
             Plan: VIP
           </Typography>
-          <Typography color={Colors.light.textsub} classes="mt-1">
+          <Typography color={Colors.light.textsub} classes="my-1">
             Remaining Days: 29
           </Typography>
         </View>

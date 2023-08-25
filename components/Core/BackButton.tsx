@@ -6,7 +6,7 @@ import { useRouter } from "expo-router";
 const BackButton = () => {
   const router = useRouter();
   return (
-    <Pressable onPress={() => router.back()}>
+    <Pressable className="relative z-[-1]" onPress={() => router.back()}>
       <Ionicons name="chevron-back" size={24} />
     </Pressable>
   );
