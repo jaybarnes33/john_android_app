@@ -72,7 +72,12 @@ const Auth = () => {
             )}
           </View>
         </View>
-        <Typography center classes="my-6 underline" size="sm" color="#7a8dff">
+        <Typography
+          center
+          classes="my-6 underline z-[-1]"
+          size="sm"
+          color="#7a8dff"
+        >
           Login with QR code
         </Typography>
         <NextButton onPress={handleSubmit} />
