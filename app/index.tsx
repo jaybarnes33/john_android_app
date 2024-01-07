@@ -1,4 +1,10 @@
-import { View, TouchableOpacity, Pressable, Image } from "react-native";
+import {
+  View,
+  TouchableOpacity,
+  Pressable,
+  Image,
+  Platform,
+} from "react-native";
 import React, { useState } from "react";
 import Screen from "../components/Screen";
 import { Ionicons } from "@expo/vector-icons";
@@ -28,7 +34,7 @@ const index = () => {
 
   const [current, setCurrent] = useState(0);
   return (
-    <View className="bg-white h-screen">
+    <View className="bg-white h-screen flex-1">
       <View className="justify-center h-[85vh]">
         {current !== 0 && (
           <TouchableOpacity
@@ -39,7 +45,12 @@ const index = () => {
           </TouchableOpacity>
         )}
 
-        <View className="px-20 gap-y-2 mt-[90%]">
+        <View
+          className={clsx([
+            "px-20 gap-y-2 mt-[90%]",
+            Platform.OS === "android" && "px-0",
+          ])}
+        >
           <Typography
             size="xl"
             color={Colors.light.primary}
@@ -83,7 +94,7 @@ const index = () => {
         </View>
       </View>
       <Image
-        className="absolute bottom-0 w-full left-0"
+        className={clsx(["absolute bottom-0 w-full left-0"])}
         source={require("../assets/images/onboarding.png")}
       />
     </View>

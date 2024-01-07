@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, Platform } from "react-native";
 import React, { ReactNode } from "react";
 import clsx from "clsx";
 import { sizes } from "../../constants/sizes";
@@ -24,10 +24,10 @@ const Typography = ({
 }) => {
   return (
     <Text
-      maxFontSizeMultiplier={1}
+      maxFontSizeMultiplier={0}
       allowFontScaling={false}
       className={clsx([
-        "font-main",
+        "font-main ",
         center && "text-center",
         capitalize && "capitalize",
         bold && "font-bolded",
@@ -35,6 +35,7 @@ const Typography = ({
         size == "md" && "leading-6 tracking-[0.024px]",
         size == "sm" && "leading-5",
         classes && classes,
+        Platform.OS === "android" && "scale-95",
       ])}
       style={{
         fontSize: size ? sizes[size as unknown as number] : sizes.md,

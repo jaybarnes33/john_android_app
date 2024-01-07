@@ -1,12 +1,11 @@
 import React, { useState, useRef } from "react";
 import {
   View,
-  Text,
   TextInput,
   TouchableOpacity,
-  StyleSheet,
   KeyboardAvoidingView,
 } from "react-native";
+import { Feather } from "@expo/vector-icons";
 import Screen from "../components/Screen";
 import Typography from "../components/Core/Typography";
 import Colors from "../constants/Colors";
@@ -20,6 +19,7 @@ const OTPScreen = () => {
   const [otp, setOtp] = useState(["", "", "", "", ""]);
   const otpInputRefs = useRef<TextInput[]>([]);
   const [active, setActive] = useState(0);
+  const [err, setErr] = useState(false);
   const handleOtpChange = (index: number, value: string) => {
     const newOtp = [...otp];
 
@@ -48,12 +48,17 @@ const OTPScreen = () => {
   const router = useNavigation();
   const handleVerifyOtp = () => {
     const enteredOtp = otp.join("");
-    // Logic to verify the OTP
-    // You can implement your own logic here, like making an API call to validate the OTP
-    console.log("Verifying OTP:", enteredOtp);
-    setAuthed(true);
-    //@ts-ignore
-    router.navigate("(drawer)", { screen: "index" });
+    if (enteredOtp.length === 5) {
+      // Logic to verify the OTP
+      // You can implement your own logic here, like making an API call to validate the OTP
+      console.log("Verifying OTP:", enteredOtp);
+
+      setAuthed(true);
+      //@ts-ignore
+      router.navigate("(drawer)", { screen: "index" });
+    } else {
+      setErr(true);
+    }
   };
 
   const handleResendOtp = () => {
@@ -81,6 +86,20 @@ const OTPScreen = () => {
                 keyboardType="numeric"
                 onFocus={() => setActive(index)}
                 maxLength={1}
+                onKeyPress={({ nativeEvent }) => {
+                  if (nativeEvent.key === "Backspace") {
+                    // If backspace is pressed and the current input is empty
+                    // Move focus to the previous input and clear it
+                    otpInputRefs.current[index - 1]?.focus();
+                    digit === ""
+                      ? handleOtpChange(index - 1, "")
+                      : handleOtpChange(index, ""); // Clear the previous input
+                  }
+                  // if (digit.length) {
+                  //   otpInputRefs.current[index + 1]?.focus();
+                  //   handleOtpChange(index + 1, nativeEvent.key);
+                  // }
+                }}
                 className={clsx([
                   "w-[44px]  md:w-[105px] rounded-md h-[56px] md:h-[126px] text-center md:text-4xl border-2 border-[#495057]",
                   active === index && "border-blue-500",
@@ -94,10 +113,19 @@ const OTPScreen = () => {
             ))}
           </View>
           <View className="items-center space-y-3 my-4">
+            {err && !otp.join("").length && (
+              <View className="flex-row mx-5 items-center">
+                <Feather name="alert-triangle" size={20} color="red" />
+                <Typography>
+                  There’s an issue with the code you entered
+                </Typography>
+              </View>
+            )}
             <TouchableOpacity>
               <Typography color={Colors.light.primary}>Resend</Typography>
             </TouchableOpacity>
           </View>
+
           <NextButton onPress={handleVerifyOtp} />
         </KeyboardAvoidingView>
       </View>

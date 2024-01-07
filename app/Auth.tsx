@@ -39,7 +39,7 @@ const Auth = () => {
       <KeyboardAvoidingView className="p-6">
         <BackButton />
 
-        <View className="mt-[30%] space-y-6">
+        <View className=" space-y-6">
           <Typography size="xl" center>
             Your phone number
           </Typography>

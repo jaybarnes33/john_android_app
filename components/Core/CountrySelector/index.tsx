@@ -3,7 +3,7 @@ import React, { Dispatch, SetStateAction, useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import Colors from "../../../constants/Colors";
 import Typography from "../Typography";
-import { ScrollView, TextInput } from "react-native-gesture-handler";
+import { FlatList, TextInput } from "react-native-gesture-handler";
 import { countries } from "./data";
 
 export interface Country {
@@ -47,11 +47,10 @@ const CountrySelector = ({
         />
       </Pressable>
       {show && (
-        <View className="h-screen flex-1 bg-white -left-6 px-6 absolute  -mt-[100%] py-24  z-[9] w-screen  ">
-          <View className="flex-row border-b pb-2 items-center ">
-            <Ionicons name="search" size={15} />
+        <View className="h-screen mt-24 flex-1 bg-white  px-6 absolute -left-6    -top-[200%]   z-[9] w-screen  ">
+          <View className="flex-row border border-gray-600 rounded-md mt-5 py-2 items-center ">
             <TextInput
-              placeholder="Country"
+              placeholder="Search Country"
               className="px-3  text-base"
               onChangeText={(text) =>
                 setData(
@@ -63,20 +62,26 @@ const CountrySelector = ({
             />
           </View>
 
-          <ScrollView>
-            {data.map((country) => (
+          <FlatList
+            data={data}
+            renderItem={({ item }) => (
               <Pressable
-                className="mt-5 flex-row "
-                key={country.code}
-                onPress={() => handleSelect(country)}
+                className="mt-5 flex-row items-center pb-4 border-b border-gray-200"
+                key={item.code}
+                onPress={() => handleSelect(item)}
               >
-                <Typography>
-                  {country.flag} &nbsp; {country.phone.replace("+", "")}{" "}
-                  {country.name}
-                </Typography>
+                <View className="flex-row space-x-10 items-center">
+                  <View className="flex-row space-x-4 w-14  items-center">
+                    <Text> {item.flag}</Text>
+                    <Text>{item.phone}</Text>
+                  </View>
+
+                  <Text> {item.name}</Text>
+                </View>
               </Pressable>
-            ))}
-          </ScrollView>
+            )}
+            keyExtractor={(country) => country.code}
+          />
         </View>
       )}
     </>
