@@ -38,8 +38,8 @@ function CustomDrawerContent(props: DrawerContentComponentProps) {
   const router = useRouter();
   return (
     <DrawerContentScrollView {...props} stickyHeaderIndices={[0]}>
-      <View className="-top-[10%]">
-        <View className="h-[25%] mt-3 bg-blue-500 ] p-6">
+      <View className="-top-[5%]">
+        <View className="h-[25%] mt-3 bg-blue-500  p-6">
           <SafeAreaView>
             <View className="h-12 w-12 bg-slate-600 border border-white rounded-full"></View>
             <View className="mt-4">
@@ -53,7 +53,7 @@ function CustomDrawerContent(props: DrawerContentComponentProps) {
           </SafeAreaView>
         </View>
         <DrawerItemList {...props} />
-        <View className="w-[80%] border-t border-[#bfbfbf] mt-12 p-6 space-y-5">
+        <View className="w-[80%] border-t border-[#bfbfbf] mt-5 p-6 space-y-5">
           <Pressable
             onPress={() => router.push("Settings")}
             className="flex-row items-center"
